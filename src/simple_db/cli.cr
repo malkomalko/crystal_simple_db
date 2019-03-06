@@ -5,12 +5,15 @@ class SimpleDb::CLI
   def start
     while true
       prompt
-      command = read_input
-      if command == ".exit"
-        exit 0
-      else
-        unrecognized_command_message(command: command)
-      end
+      parse_command(command: read_input)
+    end
+  end
+
+  private def parse_command(command)
+    if command == ".exit"
+      exit 0
+    else
+      unrecognized_command_message(command: command)
     end
   end
 
