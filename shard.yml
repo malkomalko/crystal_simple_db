@@ -1,0 +1,13 @@
+name: simple_db
+version: 0.1.0
+
+authors:
+  - Robert Malko <your-email-here>
+
+targets:
+  simple_db:
+    main: src/simple_db.cr
+
+crystal: 0.27.2
+
+license: MIT
