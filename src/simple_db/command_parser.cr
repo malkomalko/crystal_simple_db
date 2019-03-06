@@ -3,24 +3,16 @@ class SimpleDb::CommandParser
     self.new(**args).call
   end
 
-  def call
-    parse
+  def call : Command
+    if command.size > 0 && command[0] == '.'
+      Command.new(is_meta: true, value: command[1..-1])
+    else
+      Command.new(is_meta: false, value: command)
+    end
   end
 
   private def initialize(@command : String)
   end
 
   private getter command
-
-  private def parse
-    if command == ".exit"
-      exit 0
-    else
-      unrecognized_command_message(command: command)
-    end
-  end
-
-  private def unrecognized_command_message(command)
-    puts "Unrecognized command #{command}"
-  end
 end

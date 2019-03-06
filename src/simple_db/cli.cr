@@ -5,7 +5,8 @@ class SimpleDb::CLI
   def start
     while true
       prompt
-      CommandParser.call(command: read_input)
+      command = CommandParser.call(command: read_input)
+      CommandExecutor.call(command: command)
     end
   end
 
