@@ -1,6 +1,6 @@
 require "./statement"
 
-class NullStatement < Statement
+class SimpleDb::NullStatement < SimpleDb::Statement
   def initialize
     super(type: "null")
   end

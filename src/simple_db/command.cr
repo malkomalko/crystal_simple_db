@@ -1,4 +1,4 @@
-struct Command
+struct SimpleDb::Command
   getter is_meta
   getter value
 
