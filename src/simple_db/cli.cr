@@ -5,15 +5,8 @@ class SimpleDb::CLI
   def start
     while true
       prompt
-      parse_command(command: read_input)
-    end
-  end
-
-  private def parse_command(command)
-    if command == ".exit"
-      exit 0
-    else
-      unrecognized_command_message(command: command)
+      parsed_command = CommandParser.call(command: read_input)
+      CommandExecutor.call(command: parsed_command)
     end
   end
 
@@ -23,9 +16,5 @@ class SimpleDb::CLI
 
   private def read_input
     gets.to_s.strip
-  end
-
-  private def unrecognized_command_message(command)
-    puts "Unrecognized command #{command}"
   end
 end
